@@ -1,0 +1,33 @@
+name: wsrpn
+channels:
+  - pytorch
+  - huggingface
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.9
+  - pip
+  - pylint
+
+  - pytorch=1.11.0
+  - torchvision
+  - torchmetrics=0.9.3
+  - cudatoolkit=11.3
+
+  - pip:
+    - numpy
+    - matplotlib
+    - tqdm
+    - timm
+    - einops
+    - kaggle
+    - pydicom
+    - wandb
+    - hydra-core==1.1.1
+    - omegaconf==2.1.1
+    - albumentations
+    - git+https://github.com/bes-dev/mean_average_precision.git
+    - deepdiff
+    - torchxrayvision
+    - opencv-contrib-python-headless

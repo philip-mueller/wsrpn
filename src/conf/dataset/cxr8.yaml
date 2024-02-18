@@ -1,0 +1,7 @@
+
+name: cxr8
+data_dir: ${oc.env:CXR8_DIR,/datasets/CXR8}
+train_val_split: null
+
+pixel_mean: [0.505]
+pixel_std: [0.248]

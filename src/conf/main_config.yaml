@@ -1,0 +1,87 @@
+defaults:
+  - experiment_config
+  - _self_  # allows configs defined in this file to be overwritten by experiment
+  - experiment: wsrpn
+
+training:
+  batch_size: 128
+  max_steps: 50000
+  warmup_lr: null
+  min_lr: ${training.lr} 
+  warmup_steps: 0
+  weight_decay: 1e-6
+  accumulation_steps: 1
+  grad_clip_norm: 5.0
+  early_sopping_patience: 10000
+
+  metric: mAP
+  metric_mode: max
+  seed: 1234
+  
+  mixed_precision: true
+  
+  num_workers: ${oc.env:NUM_WORKERS,4}
+  prefetch: ${oc.env:IMG_PREFETCH,false}
+
+  top1_box_per_class: false
+
+  transform:
+    transform_type: labels  # boxes or labels
+    min_visibility: 0.2  # Fraction until which to discard a bounding box (only relevant for transform_type boxes)
+    
+    n_views: 2
+    train_mode: resize  # resize, rect_center, rect_random, random_crop
+    train_size: [224, 224]
+    crop_scale_range: [0.9, 1.0]  # Only used if random_crop
+
+    val_mode: resize  # resize, rect_center
+    val_size: null
+    
+    random_horizontal_flip: false
+    horizontal_flip_prob: 0.5
+
+    random_affine: false
+    random_affine_prob: 0.5
+    rotation_angle_range: [-10, 10]
+    translation_fraction_yx: [0.1, 0.1]
+    scaling_range: [0.95, 1.05]
+
+    color_jitter: true
+    color_jitter_prob: 0.5
+    brightness_jitter_ratio_range: [0.8, 1.2]
+    contrast_jitter_ratio_range: [0.8, 1.2]
+    # no saturation and hue jittering -> greyscale images
+    saturation_jitter_ratio_range: [1.0, 1.0]
+    hue_jitter_ratio_range: [0.0, 0.0]
+
+    gaussian_blur: true
+    gaussian_blur_prob: 0.5
+    gaussian_blur_sigma_range: [0.1, 3.0]
+
+plot_predictions: 20
+keep_step_plots: false
+device: cuda
+print_freq: 10
+val_freq: 500
+log_imgs_to_wandb: true
+debug: false
+resume: false
+run_name: null
+evaluate: true
+
+hydra:
+  job:
+    name: ${name}
+    config:
+      override_dirname:
+        kv_sep: +
+        item_sep: /
+        exclude_keys: [experiment, name, gpu, print_freq, debug, resume,
+                       training.num_workers, training.prefetch, plot_predictions, keep_step_plots]
+
+  run:
+    dir: ${ifel:${debug},debug_logs,${models_dir:}}/${name}/${hydra.job.override_dirname}/run_${now:%Y-%m-%d_%H-%M-%S}
+
+  sweep:
+    dir: ${ifel:${debug},debug_logs,${models_dir:}}/${name}
+    subdir: ${hydra.job.override_dirname}/run_${now:%Y-%m-%d_%H-%M-%S}

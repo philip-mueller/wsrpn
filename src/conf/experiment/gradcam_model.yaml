@@ -1,0 +1,10 @@
+# @package _global_
+defaults:
+  - /model: gradcam_model
+  - /dataset: cxr8
+
+name: gradcam_model
+
+training:
+  lr: 3.6e-5
+  min_lr: ${training.lr}

@@ -1,0 +1,12 @@
+defaults:
+  - STLModel
+  - backbone: densenet121_imgnet
+
+model_type: STLModel
+
+use_bce_loss: true
+
+heatmap_thresholds: [0.2353, 0.7059]  # 60 / 255 and 180 / 255
+
+use_nms: false
+filter_top1_per_class: true

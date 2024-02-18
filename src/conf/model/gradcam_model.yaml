@@ -1,0 +1,13 @@
+defaults:
+  - GradCAMModel
+  - backbone: densenet121_imgnet
+
+model_type: GradCAMModel
+
+use_bce_loss: true
+attribution_method: GradCAM
+feature_aggregation: lse  # mean, max, lse
+heatmap_thresholds: [0.2353, 0.7059]  # 60 / 255 and 180 / 255
+
+use_nms: false
+filter_top1_per_class: true

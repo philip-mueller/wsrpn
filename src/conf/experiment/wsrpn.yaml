@@ -1,0 +1,13 @@
+# @package _global_
+defaults:
+  - /model: wsrpn
+  - /dataset: cxr8
+
+name: wsrpn
+
+training:
+  grad_clip_norm: 1.0
+  mixed_precision: true
+
+  lr: 1.5e-4
+  min_lr: ${training.lr} 

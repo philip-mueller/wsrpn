@@ -1,0 +1,10 @@
+# @package _global_
+defaults:
+  - /model: chexnet
+  - /dataset: cxr8
+
+name: chexnet
+
+training:
+  lr: 3.6e-5
+  min_lr: ${training.lr}

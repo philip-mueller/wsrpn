@@ -1,0 +1,10 @@
+# @package _global_
+defaults:
+  - /model: multi_map_model
+  - /dataset: cxr8
+
+name: MultiMapModel
+
+training:
+  lr: 3.6e-5
+  min_lr: ${training.lr}

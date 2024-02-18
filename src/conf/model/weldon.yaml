@@ -1,0 +1,14 @@
+defaults:
+  - WELDON
+  - backbone: densenet121_imgnet
+
+model_type: WELDON
+
+top_k: 3  # Number of top regions to consider for max-min-pooling
+low_m: 3  # Number of low regions to consider for max-min-pooling
+
+use_bce_loss: true
+heatmap_thresholds: [0.2353, 0.7059]  # 60 / 255 and 180 / 255
+
+use_nms: false
+filter_top1_per_class: true

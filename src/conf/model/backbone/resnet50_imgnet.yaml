@@ -1,0 +1,6 @@
+backbone_architecture: resnet50
+backbone_pretrained: true
+pretraining_repo: 'pytorch/vision:v0.6.0'
+backbone_checkpoint: null
+backbone_kwargs: null
+freeze_backbone: false

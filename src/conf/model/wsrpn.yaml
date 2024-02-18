@@ -1,0 +1,57 @@
+defaults:
+  - WSRPN
+  - backbone: densenet121_imgnet
+
+model_type: WSRPN
+
+backbone_layer: denseblock4
+upsample_factor: 1
+pos_emb_type: sin_cos
+d_emb: 256
+mlp_d_hidden: 512
+
+n_roi_tokens: 10
+stop_grad_to_features: true
+
+n_gpp_layers: 1 # 0 means no MLP just a linear
+gpp_d_hidden: 512 
+gpp_use_offsets: true
+gpp_pos_emb: true
+gpp_use_ratios: false
+generalized_gaussian_beta: 2
+
+patch_aggregation: lse  # lse, max, mean, MIL_noisyOR
+roi_aggregation: MIL_noisyOR  # lse, max, mean, MIL_noisyOR
+apply_obj_probs_to_classes: true
+prob_mode: sigmoid
+use_cls_tokens: false
+lse_r: 5.0
+
+supcon_loss: 
+  temperature: 0.15
+  pos_alignment_weight: 1.0
+  neg_alignment_weight: 1.0
+  normalize_weights: true
+  ignore_no_label: true
+patch_bce_loss:
+  use_or_nofind: true
+  use_and_nofind: true
+roi_bce_loss:
+  use_or_nofind: true
+  use_and_nofind: true
+roi_patch_cls_consistency_loss: 
+  cls_aggregate_mode: MIL
+  sg_patch_features: true
+  sg_roi_features: false
+  exclusive_classes: true
+  ignore_nofind: false
+  pos_class_only: true
+
+use_patch_supcon: true
+use_patch_bce: true
+
+use_roi_supcon: true 
+use_roi_bce: true
+use_roi_patch_cls_consistency: true 
+
+obj_threshold: 0.2

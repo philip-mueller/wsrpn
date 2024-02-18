@@ -1,0 +1,10 @@
+# @package _global_
+defaults:
+  - /model: weldon
+  - /dataset: cxr8
+
+name: WELDON
+
+training:
+  lr: 3.6e-5
+  min_lr: ${training.lr} 

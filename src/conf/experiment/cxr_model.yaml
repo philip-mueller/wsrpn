@@ -1,0 +1,10 @@
+# @package _global_
+defaults:
+  - /model: cxr_model
+  - /dataset: cxr8
+
+name: cxr_model
+
+training:
+  lr: 3.6e-5
+  min_lr: ${training.lr}

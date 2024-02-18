@@ -1,0 +1,19 @@
+defaults:
+  - CheXNet
+  - backbone: densenet121_imgnet
+
+model_type: CheXNet
+
+use_pos_emb: false
+pool_mode: mean  # mean, max, lse, or noisyOR
+
+use_bce_loss: true
+use_supcon_loss: false
+supcon_temperature: 0.15
+supcon_d_hidden: 512
+supcon_d_emb: 128
+
+heatmap_thresholds: [0.2353, 0.7059]  # 60 / 255 and 180 / 255
+
+use_nms: false
+filter_top1_per_class: true

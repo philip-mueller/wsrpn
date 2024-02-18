@@ -1,0 +1,15 @@
+# @package _global_
+defaults:
+  - /model: acol
+  - /dataset: cxr8
+
+name: ACoL
+
+device: cuda
+print_freq: 10
+debug: false
+resume: false
+
+training:
+  lr: 3.6e-5
+  min_lr: ${training.lr}

@@ -1,0 +1,15 @@
+# @package _global_
+defaults:
+  - /model: wsddn
+  - /dataset: cxr8
+
+name: WSDDN
+
+training:
+  batch_size: 1
+  transform:
+    n_views: 1
+    gaussian_blur: false
+
+  lr: 3.6e-5
+  min_lr: ${training.lr} 

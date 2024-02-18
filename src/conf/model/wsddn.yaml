@@ -1,0 +1,16 @@
+defaults:
+  - WSDDN
+  - backbone: densenet121_imgnet
+
+model_type: WSDDN
+
+proposal_method: edge_boxes  # selective_search, edge_boxes, random_boxes
+n_random_proposals: 200
+nms_threshold: 0.4
+
+hidden_dim: 512
+
+use_bce_loss: true
+
+backbone:
+  freeze_backbone: false

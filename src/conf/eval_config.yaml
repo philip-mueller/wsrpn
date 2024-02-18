@@ -1,0 +1,32 @@
+defaults:
+  - eval
+  - _self_  # allows configs defined in this file to be overwritten by experiment
+  - dataset: cxr8
+
+plot: true
+update_wandb: false
+bootstrap: true
+
+num_workers: ${oc.env:NUM_WORKERS,4}
+prefetch: true
+seed: 1234
+debug: false
+device: cuda
+run_name: null  # i.e. run_2022-09-01_10-39-05
+
+dataset_type: test
+eval_prefix: ${dataset.name}_${dataset_type}_${hydra:job.override_dirname}
+
+hydra:
+  job:
+    name: eval_${eval_prefix}
+    config:
+      override_dirname:
+        exclude_keys: [experiment, model_name, gpu, eval_prefix, dataset, dataset.name, dataset_type, prefetch, num_workers]
+
+  run:
+    dir: ${ifel:${debug},debug_logs,${models_dir:}}/${model_name}/eval_${eval_prefix}_${now:%Y-%m-%d_%H-%M-%S}
+
+  sweep:
+    dir: ${models_dir:}/${model_name}/evals
+    subdir: eval_${eval_prefix}_${now:%Y-%m-%d_%H-%M-%S}
