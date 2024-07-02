@@ -1,5 +1,17 @@
 # Weakly Supervised Object Detection in Chest X-Rays with Differentiable ROI Proposal Networks and Soft ROI Pooling
-Weakly supervised object detection (WSup-OD) increases
+This is the official PyTorch implementation of WSRPN.
+
+**[[Paper - arXiv:2402.11985]](https://arxiv.org/abs/2402.11985)**
+
+> **Weakly Supervised Object Detection in Chest X-Rays with Differentiable ROI Proposal Networks and Soft ROI Pooling** <br>
+> Philip Müller*, Felix Meissen*, Georgios Kaissis, Daniel Rueckert <br>
+
+<p align="center">
+<img src="results/wsrpn_overview.png" width=80% height=80%
+class="center">
+</p>
+
+> **Abstract:** Weakly supervised object detection (WSup-OD) increases
 the usefulness and interpretability of image classification
 algorithms without requiring additional supervision.
 The successes of multiple instance learning in this task for
@@ -14,6 +26,14 @@ is end-to-end trainable with only image-label supervision.
 We experimentally demonstrate that our new method outperforms
 existing methods in the very challenging task of
 disease localization in chest X-ray images.
+
+## Outline
+
+1. [Setup](#setup)
+2. [Training and Evaluating our Model WSRPN](#training-and-evaluating-our-model-wsrpn)
+3. [Training and Evaluating Baselines](#training-and-evaluating-baselines)
+4. [Results](#results)
+5. [Citation](#citation)
 
 ## Setup
 Setup the conda/python environment by calling the following commands from the root dir of this project:
@@ -67,3 +87,14 @@ For the WSDDN baseline with Edge Boxes, the OpenCV model must first be downloade
 
 ## Qualitative Results
 ![Results per pathology](results/predictions.png)
+
+## Citation
+```
+@article{mueller2023wsrpn,
+  title={Weakly Supervised Object Detection in Chest X-Rays with Differentiable ROI Proposal Networks and Soft ROI Pooling}, 
+  author={Philip Müller and Felix Meissen and Georgios Kaissis and Daniel Rueckert},
+  journal={arXiv preprint arXiv:2402.11985},
+  doi={10.48550/arXiv.2402.11985},
+  year={2024}
+}
+```
