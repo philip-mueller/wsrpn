@@ -1,7 +1,7 @@
 # Weakly Supervised Object Detection in Chest X-Rays with Differentiable ROI Proposal Networks and Soft ROI Pooling
 This is the official PyTorch implementation of WSRPN.
 
-**[[Paper - arXiv:2402.11985]](https://arxiv.org/abs/2402.11985)**
+**[[Paper - arXiv:2402.11985]](https://arxiv.org/abs/2402.11985) | IEEE Transactions on Medical Imaging (TMI) [[DOI: 10.1109/TMI.2024.3435015]](https://doi.org/10.1109/TMI.2024.3435015)**
 
 > **Weakly Supervised Object Detection in Chest X-Rays with Differentiable ROI Proposal Networks and Soft ROI Pooling** <br>
 > Philip Müller*, Felix Meissen*, Georgios Kaissis, Daniel Rueckert <br>
@@ -91,10 +91,13 @@ For the WSDDN baseline with Edge Boxes, the OpenCV model must first be downloade
 ## Citation
 ```
 @article{mueller2023wsrpn,
+  author={Müller, Philip and Meissen, Felix and Kaissis, Georgios and Rueckert, Daniel},
+  journal={IEEE Transactions on Medical Imaging}, 
   title={Weakly Supervised Object Detection in Chest X-Rays with Differentiable ROI Proposal Networks and Soft ROI Pooling}, 
-  author={Philip Müller and Felix Meissen and Georgios Kaissis and Daniel Rueckert},
-  journal={arXiv preprint arXiv:2402.11985},
-  doi={10.48550/arXiv.2402.11985},
-  year={2024}
+  year={2024},
+  volume={},
+  number={},
+  pages={},
+  doi={10.1109/TMI.2024.3435015}
 }
 ```
